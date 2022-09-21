@@ -1,0 +1,24 @@
+<div *ngIf="cryptocurrency != undefined" class="card text-center">
+  <div class="card-body">
+    <div class="p-1 d-flex flex-row justify-content-center align-items-center">
+      <img src="{{cryptocurrency.imageUrl}}"/>
+      <p class="fs-3 my-auto mx-2">{{cryptocurrency.name}}</p>
+      <a class="" (click)="togglePreference()" [ngClass]="notifActive ? 'btn btn-danger' : 'btn btn-info'"><fa-icon class="icons" [icon]="faBell"></fa-icon></a>
+    </div>
+
+    <p class="fs-6 text-muted">{{cryptocurrency.name}} Price {{cryptocurrency.symbol}}</p>
+
+    <p class="fs-5 col">${{cryptocurrency.value.toString().substring(0, 8)}} <span
+      class="ms-2 rounded" [className]="getColor(+cryptocurrency.percentChange24h)">{{getPercentChange(cryptocurrency.percentChange24h)}}%</span></p>
+    <p class="text-muted">Volume : {{getVolume().toLocaleString()}}
+      <span [className]="getColor(+cryptocurrency.volumeChange24h)">{{getPercentChange(cryptocurrency.volumeChange24h)}}%</span>
+    </p>
+  </div>
+  <div class="card-footer text-muted">
+    <button  routerLink="../../wallet/" [queryParams]="{ crypto: symbol, mode : 'ACHAT'}" type="button" class="btn btn-success m-1">Buy</button>
+    <button routerLink="../../wallet/" [queryParams]="{ crypto: symbol, mode : 'VENTE'}" type="button" class="btn btn-danger m-1">Sell</button>
+    <button routerLink="../../chat/" [queryParams]="{ crypto: symbol}" type="button" class="btn btn-info m-1">Chat</button>
+  </div>
+</div>
+<app-coin-graph class="col mx-auto" [coinName]="cryptocurrency.slug"></app-coin-graph>
+

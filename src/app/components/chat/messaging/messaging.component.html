@@ -1,0 +1,12 @@
+<div id="messaging" >
+  <div *ngFor="let message of messages" class={{getMessageClass(message.send_name)}}>
+    <small class={{getSmallClass(message.send_name)}}>{{message.send_name}}</small><br/>
+    <small class="text">{{message.message}}</small><br/>
+    <small class={{getSmallClass(message.send_name)}}>{{formatDate(message.dateMessage)}}</small><br/>
+  </div>
+</div>
+<form *ngIf="crypto" [formGroup]="messageForm"  (ngSubmit)="onMessagePost(messageForm.value)" id="messageForm">
+  <textarea [formControl]="messageForm.controls.message" class="w-100"></textarea>
+  <input class="btn btn-secondary" type="submit">
+</form>
+

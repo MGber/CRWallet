@@ -1,0 +1,58 @@
+#messaging{
+  padding-right:10px;
+  padding-top:10px;
+  overflow-y: scroll;
+  height: 81vh;
+  scrollbar-width: thin;
+}
+.messageRight{
+  padding : 5px;
+  background-color: #00bbf9;
+  max-width: 75%;
+  border-radius: 10px;
+  color : white;
+  width: fit-content;
+  margin-bottom: 10px;
+  margin-left: auto;
+  white-space: pre-wrap;      /* CSS3 */
+   white-space: -moz-pre-wrap; /* Firefox */
+   white-space: -pre-wrap;     /* Opera <7 */
+   white-space: -o-pre-wrap;   /* Opera 7 */
+   word-wrap: break-word;
+}
+.messageLeft{
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  padding : 5px;
+  background-color: #adb5bd;
+  max-width: 75%;
+  border-radius: 10px;
+  color : black;
+  width: fit-content;
+  margin-bottom: 10px;
+  white-space: pre-wrap;      /* CSS3 */
+   white-space: -moz-pre-wrap; /* Firefox */
+   white-space: -pre-wrap;     /* Opera <7 */
+   white-space: -o-pre-wrap;   /* Opera 7 */
+   word-wrap: break-word;
+}
+
+.text{
+  margin:0px;
+  font-size: 16px;
+}
+
+.smallRight{
+  font-size: 12px;
+  color :#e9ecef
+}
+
+.smallLeft{
+  font-size: 12px;
+  color :#343a40
+}
+
+#messageForm > textarea {
+  resize : none;
+}

@@ -1,0 +1,46 @@
+<div class="col-md-3 mx-auto">
+  <h1>Login</h1>
+  <form [formGroup]="loginForm" (submit)="onSubmit(loginForm.value)">
+    <div class="form-outline mb-4">
+      <input
+        [formControl]="loginForm.controls.login"
+        type="text"
+        id="login"
+        name="login"
+        class="form-control"
+      />
+      <label class="form-label" for="login">Login</label>
+    </div>
+    <div class="form-outline mb-4">
+      <input
+        [formControl]="loginForm.controls.password"
+        type="password"
+        id="password"
+        name="password"
+        class="form-control"
+      />
+      <label class="form-label" for="password">Password</label>
+    </div>
+    <div class="buttons">
+      <button type="submit" (ng-disabled)="buttonsEnabled" class="btn btn-primary btn-block">Sign in</button>
+      <fa-icon (ng-disabled)="buttonsEnabled"
+        (click)="onAuthWith('yahoo')"
+        [icon]="faYahoo"
+        class="icon yahoo"
+      ></fa-icon>
+      <fa-icon (ng-disabled)="buttonsEnabled"
+        (click)="onAuthWith('google')"
+        [icon]="faGoogle"
+        class="icon text-danger"
+      ></fa-icon>
+      <fa-icon (ng-disabled)="buttonsEnabled"
+        (click)="onAuthWith('facebook')"
+        [icon]="faFacebook"
+        class="icon text-primary"
+      ></fa-icon>
+    </div>
+    <div class="text-danger" *ngIf="errorMessage | async">
+      <p>{{ errorMessage | async }}</p>
+    </div>
+  </form>
+</div>

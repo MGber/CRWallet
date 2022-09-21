@@ -1,0 +1,8 @@
+<div (click)="changeCrypto()" class="d-flex flex-row align-items-center mat-elevation-z1" id="crypto" [ngClass]=isActiveClass(currency.symbol)>
+  <div class="d-flex align-items-center">
+    <img src="{{currency.imageUrl}}" class="rounded my-2 mx-2" id="coinImg">
+    <span id="name" class="fs-4">{{currency.symbol}}</span>
+  </div>
+  <span class="fs-4 mx-auto" id="value">{{currency.value.toString().substring(0, 8)}}$</span>
+</div>
+

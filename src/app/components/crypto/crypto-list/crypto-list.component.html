@@ -1,0 +1,22 @@
+<h2 class="bg-dark text-white  mb-0 py-2">Cryptocurrencies</h2>
+<table class="table table-bordered table-striped table-dark bg-dark">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Symbol</th>
+      <th>Name</th>
+      <th>Price $</th>
+      <th>24h</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let crypto of cryptoList" [routerLink]="['/crypto', crypto.symbol]" id="crypto">
+      <td><img class="rounded-circle"
+               style="width: 45px; height: 45px" src="{{crypto.imageUrl}}"></td>
+      <td>{{crypto.symbol}}</td>
+      <td>{{crypto.name}}</td>
+      <td>{{crypto.value}}</td>
+      <td [ngClass]="getColors(+crypto.percentChange24h)">{{getPercentString(crypto.percentChange24h)}}%</td>
+    </tr>
+  </tbody>
+</table>

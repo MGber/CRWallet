@@ -1,0 +1,32 @@
+<div class="col-md-3 mx-auto">
+  <h1>Order</h1>
+  <form [formGroup]="orderForm" (ngSubmit)="onSubmit(orderForm.value)">
+    <div class="form-outline mb-4">
+      <input formControlName="quantity" min="0.0001" step="0.0001"  type="number" id="quantity" name="quantity" class="form-control" />
+      <label class="form-label" for="quantity">Quantity</label>
+      <p *ngIf="(formQuantity?.touched || submitted) && formQuantity?.errors?.['required']" class="text-danger">Please select a quantity.*</p>
+      <p *ngIf="(formQuantity?.touched || submitted) && formQuantity?.errors?.['min']" class="text-danger">Quantity must be greater than 0.0001*</p>
+    </div>
+    <div class="form-outline mb-4">
+      <select formControlName="mode"  class="form-select" id="mode" name="mode">
+        <option value="ACHAT"><span class="text-danger">Buy</span></option>
+        <option value="VENTE"><span class="text-success">Sell</span> </option>
+      </select>
+      <label class="form-label" for="mode">Mode</label>
+      <p *ngIf="(formMode?.touched || submitted) && formMode?.errors?.['required']" class="text-danger">Please select a mode*</p>
+    </div>
+    <div class="form-outline mb-4">
+      <select formControlName="crypto" (change)="onChange($event)" class="form-select" id="crypto">
+        <option *ngFor="let crypto of cryptoPrices" [value]="crypto.symbol" >{{crypto.symbol}}</option>
+      </select>
+      <label class="form-label" for="crypto">Select crypto</label>
+      <p *ngIf="(formCrypto?.touched || submitted) && formCrypto?.errors?.['required']" class="text-danger">Please select a crypto*</p>
+    </div>
+    <input type="submit" class="btn btn-primary btn-block mb-4" value="Make order">
+    <div class="text-danger" *ngIf="errorMessage |  async">
+      <p>{{errorMessage | async}}</p>
+    </div>
+  </form>
+  <p class="text-muted fs-4">Unit price : ${{unitPrice.toString().substring(0, 8)}}</p>
+  <p class="text-muted fs-4">Price : ${{(formQuantity?.value >= 0.0001) ? (unitPrice * formQuantity?.value).toString().substring(0, 8) : 0}}</p>
+</div>

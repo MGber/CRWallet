@@ -1,0 +1,60 @@
+<form [formGroup]="registerForm" (submit)="onSubmit(registerForm.value)" class="m-1 col-md-4 mx-auto col-sm-3 pt-2">
+  <h1>Register</h1>
+  <!-- 2 column grid layout with text inputs for the first and last names -->
+  <div class="row mb-4">
+    <div class="col">
+      <div class="form-outline">
+        <input formControlName="prenom" type="text" id="firstname" name="firstname" class="form-control" />
+        <label class="form-label" for="firstname">First name</label>
+        <p *ngIf="(prenom?.touched || submited) && prenom?.errors?.['required']" class="text-danger">Firsname is mandatory*</p>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-outline">
+        <input formControlName="nom" type="text" id="lastname" class="form-control" />
+        <label class="form-label" for="lastname">Last name</label>
+        <p *ngIf="(nom?.touched || submited) && nom?.errors?.['required']" class="text-danger">Lastname is mandatory*</p>
+      </div>
+    </div>
+  </div>
+  <div class="row mb-4">
+    <div class="col-md-7">
+      <div class="form-outline">
+        <input formControlName="mail" type="email" id="email" class="form-control" />
+        <label class="form-label" for="email">Email</label>
+        <p *ngIf="(mail?.touched || submited) && mail?.errors?.['required']" class="text-danger">Email is mandatory</p>
+        <p *ngIf="(mail?.touched || submited) && !mail?.errors?.['required'] && mail?.errors?.['email']" class="text-danger">Not a valid email</p>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="form-outline">
+        <input formControlName="login" type="text" id="login" name="login" class="form-control" />
+        <label class="form-label" for="login">Login</label>
+        <p *ngIf="(login?.touched || submited) && login?.errors?.['required']" class="text-danger">Login is mandatory*</p>
+        <p *ngIf="(login?.touched || submited) && !login?.errors?.['required'] && login?.errors?.['minlength']" class="text-danger">Minimum length is 3</p>
+      </div>
+    </div>
+  </div>
+  <div class="row mb-4">
+    <div class="col">
+      <div class="form-outline">
+        <input formControlName="hash" type="password" id="password" class="form-control" />
+        <label class="form-label" for="password">Password</label>
+      </div>
+      <p *ngIf="(hash?.touched || submited) && hash?.errors?.['required']" class="text-danger">Password is mandatory*</p>
+      <p *ngIf="(hash?.touched || submited) && !hash?.errors?.['required'] && hash?.errors?.['password']" class="text-danger">minimum 7 length, minimum 1 uppercase, minimum 1 lowercase, 1 number and minimum 1 special character*</p>
+    </div>
+    <div class="col">
+      <div class="form-outline">
+        <input formControlName="confirmPassword" type="password" id="confirmPassword" name="confirmPassword" class="form-control" />
+        <label class="form-label" for="confirmpassword">Confirm password</label>
+        <p *ngIf="(confirmPassword?.touched || submited) && confirmPassword?.errors?.['required']" class="text-danger">Please confirm password*</p>
+        <p *ngIf="(confirmPassword?.touched || submited) && confirmPassword?.hasError('confirm')" class="text-danger">Passwords dont match*</p>
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary btn-block mb-4">Sign up</button>
+  <div class="text-danger" *ngIf="errorMessage">
+    <p [innerText]="errorMessage"></p>
+  </div>
+</form>

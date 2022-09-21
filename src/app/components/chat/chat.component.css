@@ -1,0 +1,12 @@
+#left {
+  width: 30%;
+  overflow-y: scroll;
+  height: 94.5vh;
+  scrollbar-width: thin;
+}
+#right {
+  width: 70%;
+}
+#chat{
+  width: 100%;
+}

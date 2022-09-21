@@ -1,0 +1,12 @@
+.buttons{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.icon{
+  font-size: 30px;
+  cursor: pointer;
+}
+.yahoo{
+  color : #7b0099;
+}

@@ -1,0 +1,19 @@
+.trashIcon {
+  font-size: 25px;
+  color: red;
+  cursor: pointer;
+  padding: 1%;
+}
+
+.trashIcon:active {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 1%;
+}
+
+.parameters {
+  display: flex;
+  flex-direction: column;
+  margin: 1%;
+  align-items: center;
+}

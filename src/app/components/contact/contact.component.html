@@ -1,0 +1,27 @@
+<div class="col-md-3 mx-auto mt-2" xmlns="http://www.w3.org/1999/html">
+  <h1 class="">Contact</h1>
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit(contactForm.value)">
+    <div class="form-outline mb-4">
+      <input formControlName="user"  type="email" id="email" name="user" class="form-control" />
+      <label class="form-label" for="email">Email</label>
+      <p class="text-danger" *ngIf="(user?.touched || submited) && user?.errors?.['required']">User email is mandatory*</p>
+      <p class="text-danger" *ngIf="(user?.touched || submited) && !user?.errors?.['required'] && user?.errors?.['email']">Not a valid email*</p>
+    </div>
+    <div class="form-outline mb-4">
+      <input formControlName="subject"  type="text" id="object" name="subject" class="form-control" />
+      <label class="form-label" for="object">Subject</label>
+      <p class="text-danger" *ngIf="(subject?.touched || submited) && subject?.errors?.['required']">Email subject is mandatory*</p>
+    </div>
+    <div class="form-outline">
+      <textarea formControlName="message" class="form-control" id="message" name="message"  rows="4"></textarea>
+      <label class="form-label" for="message">Message</label>
+      <p class="text-danger" *ngIf="(message?.touched || submited) && message?.errors?.['required']">Email message is mandatory*</p>
+    </div>
+    <div class="row mb-4">
+    </div>
+    <button type="submit" class="btn btn-primary btn-block mb-4">Send email</button>
+    <div class="text-danger" *ngIf="errorMessage | async">
+      <p>{{errorMessage | async}}</p>
+    </div>
+  </form>
+</div>

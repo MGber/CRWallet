@@ -1,0 +1,26 @@
+#coinImg {
+  max-width: 60px;
+  max-height: 60px;
+}
+#crypto{
+  cursor: pointer;
+}
+
+.isActive{
+  background-color: #00bbf9;
+}
+
+@media (max-width: 1000px) {
+  #value {
+    visibility: hidden;
+  }
+}
+
+@media (max-width: 600px) {
+  #name {
+    visibility: hidden;
+  }
+}
+
+
+

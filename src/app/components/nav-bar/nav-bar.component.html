@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-black pb-1">
+  <div class="container-fluid">
+    <a routerLink="home" class="navbar-brand" ><img src="../crwallet/assets/header.PNG" alt="logo" id="header"/>CRW</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a routerLink="home" routerLinkActive="active" class="nav-link" aria-current="page" >Home</a>
+        </li>
+        <li class="nav-item" *ngIf="userLogged">
+          <a routerLink="wallet" routerLinkActive="active" class="nav-link">Wallet</a>
+        </li>
+        <li class="nav-item" *ngIf="userLogged">
+          <a routerLink="ranking" routerLinkActive="active" class="nav-link">Ranking</a>
+        </li>
+        <li class="nav-item" *ngIf="userLogged">
+          <a routerLink="chat" routerLinkActive="active" class="nav-link">Chat</a>
+        </li>
+        <li class="nav-item" *ngIf="userLogged">
+          <a routerLink="notification" routerLinkActive="active" class="nav-link">Notifications</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="contact" routerLinkActive="active" class="nav-link">Contact</a>
+        </li>
+        <li *ngIf="!userLogged" class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Connect
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a routerLink="login" routerLinkActive="active" class="dropdown-item" >Login</a></li>
+            <li><a routerLink="signup" routerLinkActive="active" class="dropdown-item" >Signup</a></li>
+          </ul>
+        </li>
+        <li *ngIf="userLogged" (click)="logout()" class="nav-item">
+          <a routerLink="login" class="nav-link">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

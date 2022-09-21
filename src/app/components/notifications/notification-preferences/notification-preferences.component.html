@@ -1,0 +1,15 @@
+<div class="m-1 col-md-3 col-sm-2 mx-auto">
+  <h1>Preferences Notifications</h1>
+  <select (change)="change($event)" class="form-control m1">
+    <option [value]="undefined">Select a currency</option>
+    <option *ngFor="let preference of preferences" [value]="preference.cryptoId">{{preference.cryptoId}}</option>
+  </select>
+  <div *ngIf="current != undefined" class="d-flex flex-column justify-content-start">
+    <mat-slide-toggle [formControl]="active" name="active" class="m-2"></mat-slide-toggle>
+    <div class="d-flex flex-row align-items-center justify-content-between">
+      <mat-slider min="1" max="5" step="1" [formControl]="percent" name="percent"  class=""></mat-slider>
+      <mat-label  class="m1 fs-5">{{percent.value}}%</mat-label>
+    </div>
+    <a (click)="removeCurrent()" class="m-1"><fa-icon class="trashIcon" [icon]="faTrash"></fa-icon></a>
+  </div>
+</div>
